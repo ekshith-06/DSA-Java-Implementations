@@ -93,6 +93,27 @@ class Main{
         return head;
     }
 
+    public static Node  delete(Node head,int idx){
+        // 1 Based Indexing
+        if(head==null)return null;
+        Node curr=head;
+        for(int i=1;i<idx;i++){
+            curr=curr.next;
+        }
+        if(curr.prev==null){
+            curr=curr.next;
+            if(curr!=null){
+                curr.prev=null;
+            }
+            return curr;
+        }
+        curr.prev.next=curr.next;
+        if(curr.next!=null)curr.next.prev=curr.prev;
+        curr.prev=null;
+        curr.next=null;
+        return head;
+    }
+
 
 
     public static void main(String[] args) {
@@ -105,6 +126,9 @@ class Main{
         print(head);
         System.out.println("Delete End!!");
          head=deleteEnd(head);
+        print(head);
+         head=insert(head,2,100);
+        System.out.println("Insert at idx :");
         print(head);
 
 
