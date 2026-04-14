@@ -72,6 +72,27 @@ class Main{
         return head;
     }
 
+    public static Node insert(Node head,int idx,int val){
+        // Just Using 1 Based indexing as its linkedlist
+        if(head==null ) return new Node(val);
+        Node curr=head;
+        for(int i=1;i<idx;i++){
+            curr=curr.next;
+        }
+        Node temp=new Node(val);
+        if(curr.prev==null){
+            curr.prev=temp;
+            temp.next=curr;
+            head=temp;
+            return head;
+        }
+            temp.prev = curr.prev;
+            curr.prev.next = temp;
+            curr.prev=temp;
+            temp.next = curr;
+        return head;
+    }
+
 
 
     public static void main(String[] args) {
